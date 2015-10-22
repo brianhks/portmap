@@ -1,0 +1,17 @@
+/*
+ * Copyright (c) 2010, Brian Hawkins
+ * Permission is granted to use this code without restriction as long
+ * as this copyright notice appears in all source files.
+ */
+ 
+import tablesaw.java.*;
+
+print("============================================================");
+
+jp = new JavaProgram("src", "build", "portmap.jar").setName("build");
+jp.getJar().setManifest("manifest.txt");
+
+
+saw.setDefaultTarget("build");
+
+
