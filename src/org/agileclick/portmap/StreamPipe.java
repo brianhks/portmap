@@ -8,14 +8,12 @@ class StreamPipe extends Thread
 	private InputStream	 		m_input;
 	private OutputStream	 		m_output;
 	private OutputStream			m_file;
-	private boolean				m_sender;
 	private volatile int			m_delay;
 
 	
 	public StreamPipe(InputStream input, OutputStream output, OutputStream file)
 			throws IOException
 		{
-		//m_sender = sender;
 		m_input = input;
 		m_output = output;
 		m_file = file;

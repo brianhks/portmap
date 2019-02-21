@@ -91,6 +91,7 @@ public class PortMap extends Thread
 		out.println("destSecure: Identifies if the destination connection should be made using ssl (true/false, default: false)");
 		out.println("sendFile: Name of file to write all sent data to. (optional)");
 		out.println("receiveFile: Name of file to write all received data to. (optional)");
+		out.println("delay: Millisecond delay to add to each packet. (optional)");
 		}
 		
 	public PortMap(int port)
