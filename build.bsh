@@ -8,7 +8,7 @@ import tablesaw.java.*;
 
 print("============================================================");
 
-version = "1.0";
+version = "1.1";
 jp = new JavaProgram("src", "build", "portmap-"+version+".jar").setName("build");
 jp.getJar().setManifest("manifest.txt");
 

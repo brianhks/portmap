@@ -12,12 +12,6 @@ public class PortMap extends Thread
 	public static final int BUFFER_SIZE = 1024 * 8;
 	private int m_port;
 	
-	/**
-	arg 0: Listening local port
-	arg 1: Destination IP
-	arg 2: Destination port
-	arg 3: Delay milli sec
-	*/
 	public static void main(String[] args)
 			throws Exception
 		{
@@ -30,9 +24,10 @@ public class PortMap extends Thread
 		Properties props = new Properties();
 		props.load(new FileReader(args[0]));
 
-		int listenPort = Integer.parseInt(props.getProperty("listenPort"));
+		int listenPort = Integer.parseInt(props.getProperty("listenPort").trim());
+		String listenAddress = props.getProperty("listenAddr");
 		String destAddr = props.getProperty("destAddr");
-		int destPort = Integer.parseInt(props.getProperty("destPort"));
+		int destPort = Integer.parseInt(props.getProperty("destPort").trim());
 
 		int delay = Integer.parseInt(props.getProperty("delay", "0"));
 
@@ -44,9 +39,9 @@ public class PortMap extends Thread
 		SSLSocketFactory sslFactory =
 				(SSLSocketFactory) SSLSocketFactory.getDefault();
 
-		
+
 		//The main thread handles TCP traffic
-		ServerSocket server = new ServerSocket(listenPort);
+		ServerSocket server = new ServerSocket(listenPort, 50, Inet4Address.getByName(listenAddress));
 		Socket s;
 		while ((s = server.accept()) != null)
 			{
@@ -86,6 +81,7 @@ public class PortMap extends Thread
 		out.println();
 		out.println("Properties in portmap.properties");
 		out.println("listenPort: Local port to listen on for connections. (required)");
+		out.println("listenAddr: Local address to listen on. (required)");
 		out.println("destPort: Destination port to connect to. (required)");
 		out.println("destAddr: Destination address to connect to. (required)");
 		out.println("destSecure: Identifies if the destination connection should be made using ssl (true/false, default: false)");
