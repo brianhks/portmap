@@ -15,7 +15,7 @@ Properties in portmap.properties
 
 ``` 
 listenPort: Local port to listen on for connections. (required)
-listenPort: Local port to listen on for connections. (required)
+listenAddr: Local address to listen on. (required)
 destPort: Destination port to connect to. (required)
 destAddr: Destination address to connect to. (required)
 destSecure: Identifies if the destination connection should be made using ssl (true/false, default: false)
